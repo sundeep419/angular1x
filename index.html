@@ -14,24 +14,49 @@
 			</h3>
 			<section ng-controller="PanelController as panel">
 				<ul class="nav nav-pills">
-					<li ng-class="{active:tab===1}">
-					<a href ng-click="panlel.selectTab(1)">Description</a></li>
-					<li ng-class="{active:tab===2}">
+					<li ng-class="{ active : panel.isSelected(1)}">
+					<a href ng-click="panel.selectTab(1)">Description</a></li>
+					<li ng-class="{ active : panel.isSelected(2)}">
 					<a href ng-click="panel.selectTab(2)">Specifications</a></li>
-					<li ng-class="{active:tab===3}">
+					<li ng-class="{ active : panel.isSelected(3)}">
 					<a href ng-click="panel.selectTab(3)">Reviews</a></li>
 				</ul>
-				<div class="panel" ng-show="tab===1">
+				<div class="panel" ng-show="panel.isSelected(1)">
 					<h4>Description</h4>
 					<p>{{product.description}}</p>
 				</div>
-				<div class="panel" ng-show="tab===2">
+				<div class="panel" ng-show="panel.isSelected(2)">
 					<h4>Specifications</h4>
 					<blockquote>None yet</blockquote>
 				</div>
-				<div class="panel" ng-show="tab===3">
+				<div class="panel" ng-show="panel.isSelected(3)">
 					<h4>Reviews</h4>
-					<blockquote>None yet</blockquote>
+					<blockquote ng-repeat="review in product.reviews"></blockquote>
+					<form name="reviewForm">
+					<blockquote>
+						<b>Stars: {{review.stars}}</b>
+						<br>
+						{{review.body}}
+						<br>
+						<cite>by: {{review.author}}</cite>
+					</blockquote>
+					<h3>Submit your review:</h3>
+						<select ng-model="review.stars" placeholder='Rate the product'>
+							<option value="1">1 star</option>
+							<option value="2">2 stars</option>
+							<option value="3">3 stars</option>
+							<option value="4">4 stars</option>
+							<option value="5">5 stars</option>
+						</select>
+						<br>
+						<br>
+						<textarea ng-model="review.body" placeholder='Write a short preview on the product' cols="30" rows="3"></textarea>
+						<br>
+						<br>
+						<!-- <label>by:</label> -->
+						<input ng-model="review.author" type="email" placeholder='sundeep419@gmail.com' />
+						<input type="submit" value="submit"/>
+					</form>
 				</div>
 			</section>
 			</li>
