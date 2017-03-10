@@ -34,14 +34,15 @@
 					<blockquote ng-repeat="review in product.reviews"></blockquote>
 					<form name="reviewForm">
 					<blockquote>
-						<b>Stars: {{review.stars}}</b>
-						<br>
+						<b>{{review.stars}} Stars </b>
 						{{review.body}}
 						<br>
-						<cite>by: {{review.author}}</cite>
+						<cite>- {{review.author}}</cite>
 					</blockquote>
 					<h3>Submit your review:</h3>
-						<select ng-model="review.stars" placeholder='Rate the product'>
+						<select ng-model="review.stars" ng-init=review.stars="
+						">
+							<option value="">Rate the product now</option>
 							<option value="1">1 star</option>
 							<option value="2">2 stars</option>
 							<option value="3">3 stars</option>
@@ -53,7 +54,7 @@
 						<textarea ng-model="review.body" placeholder='Write a short preview on the product' cols="30" rows="3"></textarea>
 						<br>
 						<br>
-						<!-- <label>by:</label> -->
+						<label>by:</label>
 						<input ng-model="review.author" type="email" placeholder='sundeep419@gmail.com' />
 						<input type="submit" value="submit"/>
 					</form>

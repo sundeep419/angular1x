@@ -14,8 +14,8 @@
 		{
 			full:'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Geschliffener_blauer_Saphir.jpg/170px-Geschliffener_blauer_Saphir.jpg',
 		}	
-		]
-	},
+		],
+		 },
 	{
 		name:'ruby',
 		price:12.15,
