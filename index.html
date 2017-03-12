@@ -1,12 +1,13 @@
 <html ng-app="store">
-	<head>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">	
-		<script type="text/javascript" src="angular.min.js"></script>
-		<script type="text/javascript" src="app.js"></script>
-	</head>
-	<body ng-controller="StoreController as store">
-		<ul class="list-group">
-			<li class="list-group-item" ng-repeat="product in store.products">
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">	
+	<script type="text/javascript" src="angular.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+	<link rel="stylesheet" type="text/css" href="angular1xtest.css">
+</head>
+<body ng-controller="StoreController as store">
+	<ul class="list-group">
+		<li class="list-group-item" ng-repeat="product in store.products">
 			<h3>
 				{{product.name}}
 				<em class="pull-right">{{product.price | currency }}</em>
@@ -21,46 +22,46 @@
 					<li ng-class="{ active : panel.isSelected(3)}">
 					<a href ng-click="panel.selectTab(3)">Reviews</a></li>
 				</ul>
-				<div class="panel" ng-show="panel.isSelected(1)">
-					<h4>Description</h4>
-					<p>{{product.description}}</p>
-				</div>
-				<div class="panel" ng-show="panel.isSelected(2)">
-					<h4>Specifications</h4>
-					<blockquote>None yet</blockquote>
-				</div>
-				<div class="panel" ng-show="panel.isSelected(3)">
-					<h4>Reviews</h4>
-					<blockquote ng-repeat="review in product.reviews"></blockquote>
-					<form name="reviewForm">
-					<blockquote>
-						<b>{{review.stars}} Stars </b>
-						{{review.body}}
-						<br>
-						<cite>- {{review.author}}</cite>
-					</blockquote>
-					<h3>Submit your review:</h3>
-						<select ng-model="review.stars" ng-init=review.stars="
-						">
-							<option value="">Rate the product now</option>
-							<option value="1">1 star</option>
-							<option value="2">2 stars</option>
-							<option value="3">3 stars</option>
-							<option value="4">4 stars</option>
-							<option value="5">5 stars</option>
-						</select>
-						<br>
-						<br>
-						<textarea ng-model="review.body" placeholder='Write a short preview on the product' cols="30" rows="3"></textarea>
-						<br>
-						<br>
-						<label>by:</label>
-						<input ng-model="review.author" type="email" placeholder='sundeep419@gmail.com' />
-						<input type="submit" value="submit"/>
-					</form>
-				</div>
-			</section>
-			</li>
-		</ul>
-	</body>
-</html>
+						<div class="panel" ng-show="panel.isSelected(1)">
+							<h4>Description</h4>
+							<p>{{product.description}}</p>
+						</div>
+						<div class="panel" ng-show="panel.isSelected(2)">
+							<h4>Specifications</h4>
+							<blockquote>None yet</blockquote>
+						</div>
+						<div class="panel" ng-show="panel.isSelected(3)">
+								<h4>Reviews</h4>
+								<blockquote ng-repeat="review in product.reviews"></blockquote>
+								<form name="reviewForm" ng-controller="ReviewController as reviewctrl"
+																				ng-submit="reviewctrl.addReview(product)">
+									<blockquote>
+										<b>{{reviewctrl.review.stars}} Stars </b>
+										{{reviewctrl.review.body}}
+										<br>
+										<cite>- {{reviewctrl.review.author}}</cite>
+									</blockquote>
+									<h3>Submit your review:</h3>
+									<select ng-model="reviewctrl.review.stars" ng-init=review.stars="">
+									<option value="">Rate the product now</option>
+									<option value="1">1 star</option>
+									<option value="2">2 stars</option>
+									<option value="3">3 stars</option>
+									<option value="4">4 stars</option>
+									<option value="5">5 stars</option>
+								</select>
+								<br>
+								<br>
+								<textarea ng-model="reviewctrl.review.body" placeholder='Write a short preview on the product' cols="30" rows="3"></textarea>
+								<br>
+								<br>
+								<label>by:</label>
+								<input ng-model="reviewctrl.review.author" type="email" placeholder='sundeep419@gmail.com' />
+								<input type="submit" value="submit"/>
+							</form>
+						</div>
+					</section>
+				</li>
+			</ul>
+		</body>
+		</html>
