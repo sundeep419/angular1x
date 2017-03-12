@@ -1,11 +1,12 @@
 <html ng-app="store">
 <head>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">	
 	<script type="text/javascript" src="angular.min.js"></script>
 	<script type="text/javascript" src="app.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">	
+
 	<link rel="stylesheet" type="text/css" href="angular1xtest.css">
 </head>
-<body ng-controller="StoreController as store">
+<body ng-controller="StoreController as store" class="container">
 	<ul class="list-group">
 		<li class="list-group-item" ng-repeat="product in store.products">
 			<h3>

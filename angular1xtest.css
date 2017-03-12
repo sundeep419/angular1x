@@ -1,8 +1,22 @@
-body { 
-  background: url("gem.jpg") no-repeat center center fixed; 
+body
+{
+	background-color: transparent !important;
+}
+
+
+html { 
+	background-color:#000!important;
+  background: url("gem.jpg") no-repeat center center fixed !important;  
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  background-color: rgba(255, 255, 255, 0.4);
+}
+ul li{
+
+	background-color: transparent !important;
+}
+
+.list-group-item{
+	border: none;
 }
